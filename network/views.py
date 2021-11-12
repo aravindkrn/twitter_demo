@@ -52,6 +52,7 @@ def register(request):
                 request, "network/register.html", {"message": "Enter all fields"}
             )
 
+
         if confirmation != password:
             return render(
                 request,
