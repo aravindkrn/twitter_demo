@@ -1,17 +1,41 @@
 {% extends "network/base.html" %}
 
 {% block body %}
-    {% for post in posts %}
-        <table style="width:50%">
-            <tr>
-                <td style="text-align:left"><b>{{ post.author }}</b></td>
-                <td style="text-align:right">{{ post.modified }}</td>
-            </tr>
-            <tr>
-                <td colspan="2">{{ post.content }}</td>
-            </tr>
-            <tr>
-                <td>{{ post.likes }}</td>
-            </tr>
+
+    {% block mypost %}
+    {% endblock %}
+
+    {% for p in posts %}
+
+    <div class="row pt-3 bg-light">
+        <div class="col-4">
+            <h4 style="cursor: pointer;">{{ p.author.username }}</h4>
+            <!-- TODO onclick redirect to home page-->
+        </div>
+        <div class="col-4">
+            <p class="float-right"> {{ p.modified }}</p>
+        </div>
+        <div class="col-4">
+            <!-- TODO edit option if user logged in-->
+        </div>
+    </div>
+
+    <div class="row pt-3 bg-light">
+        <div class="col-8">
+            <p> {{ p.content }} </p>
+        </div>
+    </div>
+
+    <div class="row pt-3 bg-light">
+        <div class="col-2">
+            <a href="#">
+                <i class="fa fa-heart" style="font-size:20px;color:red;text-shadow:2px 2px 4px #000000;"></i> &nbsp;&nbsp;{{ p.likes }}
+                <!-- TODO like option -->
+            </a>
+        </div>
+    </div>
+
+    <br/>
+
     {% endfor %}
 {% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'network/home.html' %}
+
+{% block mypost %}
+
+    <div class="page-content page-container" id="page-content">
+        <section class="jumbotron text-center">
+            <div class="container">
+              <h1>Hi, I'm {{ user.name }} </h1>
+              <div class="card-block">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p class="m-b-10 f-w-600">
+                            {% if user %}
+                                <a href="#" class="btn btn-primary my-2">Follow</a> &emsp; <!-- TODO mail -->
+                            {% endif %}
+                            {{ user.followers.count }} followers &emsp; {{ user.following.count }} following</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p class="m-b-10 f-w-600">Email</p>
+                        <h6 class="text-muted f-w-400">{{ user.email }}</h6>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="m-b-10 f-w-600">Date Joined</p>
+                        <h6 class="text-muted f-w-400">{{ user.date_joined }}</h6>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </section>
+    </div>
+
+        <form> <!-- TODO new post -->
+            <div class="row pt-3 bg-light">
+                <div class="col-4">
+                    <h2> New Post</h2>
+                    <textarea rows="3" cols="80" name="userPost"></textarea>
+                    <input type="submit" value="Post" />
+                </div>
+            </div>
+            <br/> <br/>
+        </form>
+
+{% endblock %}
