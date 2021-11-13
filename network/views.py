@@ -102,3 +102,4 @@ class UserApiView(APIView):
         user = get_object_or_404(User, username=username)
         serializer = UserSerializer(user)
         return Response(serializer.data)
+
